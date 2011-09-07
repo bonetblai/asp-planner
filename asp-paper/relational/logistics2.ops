@@ -1,0 +1,123 @@
+(predicates
+  (atobj <object> <location>)
+  (atobjair <object> <airport>)
+  (attruck <truck> <location>)
+  (attruckair <truck> <airport>)
+  (atair <airplane> <airport>)
+
+  (intruck <object> <truck>)
+  (inair <object> <airplane>)
+
+  (locat <location> <city>)
+  (locatair <airport> <city>))
+
+(operator
+  LOADTRUCK1
+  (vars <object> <truck> <location>)
+  (preconds 
+    (attruck <truck> <location>)
+    (atobj <object> <location>))
+  (add
+    (intruck <object> <truck>))
+  (del
+    (atobj <object> <location>)))
+
+(operator
+  LOADTRUCK2
+  (vars <object> <truck> <airport>)
+  (preconds 
+    (attruckair <truck> <airport>)
+    (atobjair <object> <airport>))
+  (add
+    (intruck <object> <truck>))
+  (del
+    (atobjair <object> <airport>)))
+
+(operator
+  LOADAIRPLANE
+  (vars <object> <airplane> <airport>)
+  (preconds
+    (atobjair <object> <airport>)
+    (atair <airplane> <airport>))
+  (add
+    (inair <object> <airplane>))
+  (del
+    (atobjair <object> <airport>)))
+
+(operator
+  UNLOADTRUCK1
+  (vars  <object> <truck> <location>)
+  (preconds
+    (attruck <truck> <location>)
+    (intruck <object> <truck>))
+  (add
+    (atobj <object> <location>))
+  (del
+    (intruck <object> <truck>)))
+
+(operator
+  UNLOADTRUCK2
+  (vars  <object> <truck> <airport>)
+  (preconds
+    (attruckair <truck> <airport>)
+    (intruck <object> <truck>))
+  (add
+    (atobjair <object> <airport>))
+  (del
+    (intruck <object> <truck>)))
+
+(operator
+   UNLOADAIRPLANE
+  (vars <object> <airplane> <airport>)
+  (preconds
+    (inair <object> <airplane>)
+    (atair <airplane> <airport>))
+  (add
+    (atobjair <object> <airport>))
+  (del
+    (inair <object> <airplane>)))
+
+(operator
+   DRIVETRUCK1
+  (vars <truck> <location1> <location2> <city>)
+  (preconds
+    (attruck <truck> <location1>)
+    (locat <location1> <city>)
+    (locat <location2> <city>))
+  (add
+    (attruck <truck> <location2>))
+  (del
+    (attruck <truck> <location1>)))
+
+(operator
+   DRIVETRUCK2
+  (vars <truck> <location> <airport> <city>)
+  (preconds
+    (attruck <truck> <location>)
+    (locat <location> <city>)
+    (locatair <airport> <city>))
+  (add
+    (attruckair <truck> <airport>))
+  (del
+    (attruck <truck> <location>)))
+
+(operator
+   DRIVETRUCK3
+  (vars <truck> <airport> <location> <city>)
+  (preconds
+    (attruckair <truck> <airport>)
+    (locat <location> <city>)
+    (locatair <airport> <city>))
+  (add
+    (attruck <truck> <location>))
+  (del
+    (attruckair <truck> <airport>)))
+
+(operator FLYAIRPLANE
+  (vars <airplane> <airport1> <airport2>)
+  (preconds
+    (atair <airplane> <airport1>))
+  (add
+    (atair <airplane> <airport2>))
+  (del
+    (atair <airplane> <airport1>)))

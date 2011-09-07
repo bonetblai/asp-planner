@@ -1,0 +1,17 @@
+(instantiation
+  (block the_table block_A block_B block_C)
+  (tvalue yes no))
+
+(initial
+  (block_C.position = the_table)
+  (block_C.clear = no)
+  (block_A.position = block_C)
+  (block_A.clear = yes)
+  (block_B.position = the_table)
+  (block_B.clear = yes)
+  (the_table.clear = no))
+
+(goal
+  (block_B.position = block_A)
+  (block_C.position = block_B))
+

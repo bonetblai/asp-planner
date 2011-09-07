@@ -1,0 +1,62 @@
+(object TRUCK
+  (tpos (<location>)))
+
+(object CARGO
+  (cpos (<location> <truck> <plane>)))
+
+(object PLANE
+  (ppos (<location>)))
+
+(object LOCATION
+  (lpos (<city>))
+  (type (<type>)))
+
+$$ 
+
+(operator LOADTRUCK
+  (vars <cargo_1> <truck_1> <location_1>)
+  (preconds 
+    (<truck_1>.tpos == <location_1>)
+    (<cargo_1>.cpos == <location_1>))
+  (effects
+    (<cargo_1>.cpos = <truck_1>)))
+
+(operator UNLOADTRUCK
+  (vars <cargo_1> <truck_1> <location_1>)
+  (preconds
+    (<truck_1>.tpos == <location_1>)
+    (<cargo_1>.cpos == <truck_1>))
+  (effects
+    (<cargo_1>.cpos = <truck_1>.tpos)))
+
+(operator LOADAIRPLANE
+  (vars <cargo_1> <plane_1> <location_1>)
+  (preconds
+    (<plane_1>.ppos == <location_1>)
+    (<cargo_1>.cpos == <location_1>))
+  (effects
+    (<cargo_1>.cpos = <plane_1>)))
+
+(operator UNLOADAIRPLANE
+  (vars <cargo_1> <plane_1> <location_1>)
+  (preconds
+    (<cargo_1>.cpos == <plane_1>)
+    (<plane_1>.ppos == <location_1>))
+  (effects
+    (<cargo_1>.cpos = <location_1>)))
+
+(operator DRIVETRUCK
+  (vars <truck_1> <location_1> <location_2>)
+  (preconds
+    (<truck_1>.tpos == <location_1>)
+    (<location_1>.lpos == <location_2>.lpos))
+  (effects
+    (<truck_1>.tpos = <location_2>)))
+
+(operator FLYAIRPLANE
+  (vars <plane_1> <location_1> <location_2>)
+  (preconds
+    (<plane_1>.ppos == <location_1>)
+    (<location_2>.type == airport))
+  (effects
+    (<plane_1>.ppos = <location_2>)))

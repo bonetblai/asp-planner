@@ -1,0 +1,23 @@
+successful initialization
+running ./blocks3 with the following args:
+	-b = 100
+	-c = 100
+	-d = 0
+	-n = 1
+	-p = 0.000000
+	-r = 8346
+	-t = 0
+	-X = 1.000000
+
+initial value = 97.000000
+solution found in 18 steps (etime = 12)
+
+total time = 12
+number of elements in hash table = 918
+diameter of hash table = 2
+average length of each hash entry = 1.004376
+heuristic evaluations = 918
+hits on hash table = 68420
+updates of entries in the hash table = 1400
+branching factor = 49.012143
+average number of ties = 1.891429

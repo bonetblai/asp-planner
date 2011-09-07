@@ -1,0 +1,34 @@
+(ranges
+	(object mxf avrim alex jason pencil paper michelle
+	        april betty lisa)
+ 	(rocket r1 r2)
+	(place London JFK Bos Paris))
+
+(initial
+  (at r1 JFK)
+  (at r2 Paris)
+  (hasfuel r1)
+  (hasfuel r2)
+  (at mxf JFK)
+  (at avrim Paris)
+  (at alex Bos)
+  (at jason JFK)
+  (at pencil Paris)
+  (at paper London)
+  (at michelle Bos)
+  (at april Paris)
+  (at betty London)
+  (at lisa London))
+
+(goal
+  (at mxf Bos)  
+  (at avrim JFK)
+  (at pencil Bos)
+  (at alex JFK)
+  (at april Bos)
+  (at lisa Paris)
+  (at michelle JFK)
+  (at jason Bos)
+  (at paper Paris)
+  (at betty JFK))
+

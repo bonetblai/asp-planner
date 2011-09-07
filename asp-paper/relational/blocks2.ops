@@ -1,0 +1,43 @@
+(predicates
+	(ontable <block>)
+	(clear <block>)
+	(on <block1> <block2>))
+
+(operator
+  MOVETOTABLE
+  (vars <block1> <block2>)
+  (preconds 
+	(clear <block1>)
+	(on <block1> <block2>))
+  (add 
+	(clear <block2>)
+	(ontable <block1>))
+  (del
+	(on <block1> <block2>)))
+
+(operator
+  MOVETOBLOCK1
+  (vars <block1> <block2> <block3>)
+  (preconds
+	(clear <block1>)
+	(clear <block3>)
+	(on <block1> <block2>))
+  (add 
+	(clear <block2>) 
+	(on <block1> <block3>))
+  (del
+	(clear <block3>)
+	(on <block1> <block2>)))
+
+(operator
+ MOVETOBLOCK2
+ (vars <block1> <block2>)
+ (preconds 
+	(clear <block1>) 
+	(clear <block2>)
+	(ontable <block1>))
+ (add 
+        (on <block1> <block2>))
+ (del
+	(clear <block2>)
+	(ontable <block1>)))

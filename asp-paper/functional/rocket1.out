@@ -1,0 +1,23 @@
+successful initialization
+running ./rocket1 with the following args:
+	-b = 100
+	-c = 100
+	-d = 0
+	-n = 1
+	-p = 0.000000
+	-r = 822
+	-t = 0
+	-X = 1.000000
+
+initial value = 51.000000
+solution found in 28 steps (etime = 5)
+
+total time = 5
+number of elements in hash table = 681
+diameter of hash table = 1
+average length of each hash entry = 1.000000
+heuristic evaluations = 681
+hits on hash table = 30806
+updates of entries in the hash table = 2200
+branching factor = 13.802727
+average number of ties = 2.645455

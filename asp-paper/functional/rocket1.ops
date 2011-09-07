@@ -1,0 +1,45 @@
+(object ROCKET
+  (pos1 (<place>))
+  (fuel (<fval>)))
+
+(object OBJ
+  (pos2 (<place>))
+  (in (<rocket>))
+  (type (<tvalue>)))
+
+$$ 
+
+(operator LOAD
+  (vars <obj_1> <rocket_1> <place_1>)
+  (preconds 
+    (<obj_1>.pos2 == <place_1>)
+    (<obj_1>.type == plc)
+    (<rocket_1>.pos1 == <place_1>))
+  (effects
+    (<obj_1>.in = <rocket_1>)
+    (<obj_1>.type = rck)))
+
+(operator UNLOAD
+  (vars <obj_1> <rocket_1> <place_1>)
+  (preconds
+    (<obj_1>.in == <rocket_1>)
+    (<obj_1>.type == rck)
+    (<rocket_1>.pos1 == <place_1>))
+  (effects
+    (<obj_1>.pos2 = <place_1>)
+    (<obj_1>.type = plc)))
+
+(operator MOVE
+  (vars <rocket_1> <place_1>)
+  (preconds 
+    (<rocket_1>.fuel == full))
+  (effects
+    (<rocket_1>.pos1 = <place_1>)
+    (<rocket_1>.fuel = empty)))
+
+(operator REFUEL
+  (vars <rocket_1>)
+  (preconds 
+    (<rocket_1>.fuel == empty))
+  (effects
+    (<rocket_1>.fuel = full)))

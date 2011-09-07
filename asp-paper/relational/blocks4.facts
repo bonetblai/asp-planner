@@ -1,0 +1,51 @@
+(ranges
+  (block blockA blockB blockC blockD blockE blockF blockG blockH blockI blockJ blockK
+         blockL blockM blockN blockO blockP blockQ blockR blockS))
+
+(initial
+  (ontable blockM)
+  (on blockL blockM)
+  (on blockA blockL)
+  (clear blockA)
+
+  (ontable blockO)
+  (on blockN blockO)
+  (on blockD blockN)
+  (on blockE blockD)
+  (on blockJ blockE)
+  (on blockK blockJ)
+  (clear blockK)
+
+  (ontable blockF)
+  (on blockG blockF)
+  (on blockH blockG)
+  (on blockI blockH)
+  (clear blockI)
+
+  (ontable blockB)
+  (on blockC blockB)
+  (on blockP blockC)
+  (on blockQ blockP)
+  (on blockR blockQ)
+  (on blockS blockR)
+  (clear blockS))
+
+(goal
+  (on blockE blockJ)
+  (on blockA blockE)
+  (on blockN blockA)
+  (on blockS blockN)
+  (on blockR blockS)
+  (on blockQ blockR)
+
+  (on blockI blockD)
+  (on blockH blockI)
+  (on blockM blockH)
+  (on blockO blockM)
+
+  (on blockK blockG)
+  (on blockP blockK)
+  (on blockC blockP)
+  (on blockB blockC)
+  (on blockL blockB))
+

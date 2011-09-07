@@ -1,0 +1,35 @@
+(object BLOCK
+  (position (<block>))
+  (clear (<tvalue>)))
+
+$$
+
+(operator MOVE
+  (vars <block_1> <block_2>)
+  (preconds
+    (<block_1>.clear == yes)
+    (<block_2>.clear == yes)
+    (<block_1>.position != the_table))
+  (effects
+    (<block_1>.position.clear = yes)
+    (<block_1>.position = <block_2>)
+    (<block_2>.clear = no)))
+
+(operator PUTDOWN
+  (vars <block_1>)
+  (preconds
+    (<block_1>.clear == yes)
+    (<block_1>.position != the_table))
+  (effects
+    (<block_1>.position.clear = yes)
+    (<block_1>.position = the_table)))
+
+(operator PUTON
+  (vars <block_1> <block_2>)
+  (preconds
+    (<block_1>.clear == yes)
+    (<block_2>.clear == yes)
+    (<block_1>.position == the_table))
+  (effects
+    (<block_1>.position = <block_2>)
+    (<block_2>.clear = no)))

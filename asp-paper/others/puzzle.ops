@@ -1,0 +1,44 @@
+(object POS
+  (up (<pos>))
+  (dn (<pos>))
+  (rt (<pos>))
+  (lt (<pos>))
+  (cont (<tile>)))
+
+$$
+
+(operator UP
+  (vars <pos_1>)
+  (preconds
+    (<pos_1>.up != void)
+    (<pos_1>.up.cont == blank))
+  (effects
+    (<pos_1>.up.cont = <pos_1>.cont)
+    (<pos_1>.cont = blank)))
+
+(operator DOWN
+  (vars <pos_1>)
+  (preconds
+    (<pos_1>.dn != void)
+    (<pos_1>.dn.cont == blank))
+  (effects
+    (<pos_1>.dn.cont = <pos_1>.cont)
+    (<pos_1>.cont = blank)))
+
+(operator RIGHT
+  (vars <pos_1>)
+  (preconds 
+   (<pos_1>.rt != void)
+   (<pos_1>.rt.cont == blank))
+  (effects
+    (<pos_1>.rt.cont = <pos_1>.cont)
+    (<pos_1>.cont = blank)))
+
+(operator LEFT
+  (vars <pos_1>)
+  (preconds
+    (<pos_1>.lt != void)
+    (<pos_1>.lt.cont == blank))
+  (effects
+    (<pos_1>.lt.cont = <pos_1>.cont)
+    (<pos_1>.cont = blank)))

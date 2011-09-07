@@ -1,0 +1,43 @@
+(ranges
+  (object pkg1 pkg2 pkg3 pkg4 pkg5 pkg6 pkg7)
+  (truck pghtruck bostruck latruck nytruck)
+  (airplane airp1 airp2)
+  (airport airbos airpgh airla airny)
+  (location bos la pgh ny)
+  (city pgh bos la ny))
+
+(initial
+  (atobj pkg1 pgh)
+  (atobj pkg2 pgh)
+  (atobj pkg3 pgh)
+  (atobj pkg4 ny)
+  (atobj pkg5 bos)
+  (atobj pkg6 bos)
+  (atobj pkg7 ny)
+  (atair airp1 airpgh)
+  (atair airp2 airpgh)
+  (attruck bostruck bos)
+  (attruck pghtruck pgh)
+  (attruck latruck la)
+  (attruck nytruck ny)
+  (locat pgh pgh)
+  (locatair airpgh pgh)
+  (locat bos bos)
+  (locatair airbos bos)
+  (locat la la)
+  (locatair airla la)
+  (locat ny ny)
+  (locatair airny ny))
+
+(goal
+  (atobj pkg1 bos)
+  (atobj pkg2 ny)
+  (atobj pkg3 la)
+  (atobjair pkg4 airla)
+  (atobj pkg5 pgh)
+  (atobjair pkg6 airny)
+  (atobj pkg7 pgh))
+
+
+
+

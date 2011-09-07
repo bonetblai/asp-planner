@@ -1,0 +1,48 @@
+(instantiation
+  (cargo pkg1 pkg2 pkg3 pkg5 pkg7)
+  (truck truck1 truck2 truck3 truck4)
+  (plane plane1 plane2) 
+  (location dtbos dtla dtpgh dtny apbos apla appgh apny)
+  (city pgh bos la ny)
+  (type downtown airport))
+
+
+(initial
+  (pkg1.cpos = dtpgh)
+  (pkg2.cpos = dtpgh)
+  (pkg3.cpos = dtpgh)
+  (pkg5.cpos = dtbos)
+  (pkg7.cpos = dtny)
+
+  (plane1.ppos = appgh)
+  (plane2.ppos = appgh)
+  (truck1.tpos = dtbos)
+  (truck2.tpos = dtpgh)
+  (truck3.tpos = dtla)
+  (truck4.tpos = dtny)
+
+  (dtpgh.lpos = pgh)
+  (dtpgh.type = downtown)
+  (appgh.lpos = pgh)
+  (appgh.type = airport)
+  (dtbos.lpos = bos)
+  (dtbos.type = downtown)
+  (apbos.lpos = bos)
+  (apbos.type = airport)
+  (dtla.lpos = la)
+  (dtla.type = downtown)
+  (apla.lpos = la)
+  (apla.type = airport)
+  (dtny.lpos = ny)
+  (dtny.type = downtown)
+  (apny.lpos = ny)
+  (apny.type = airport))
+
+(goal
+  (pkg1.cpos = dtbos)
+  (pkg2.cpos = dtny)
+  (pkg3.cpos = dtla)
+  (pkg5.cpos = dtpgh)
+  (pkg7.cpos = dtpgh))
+
+

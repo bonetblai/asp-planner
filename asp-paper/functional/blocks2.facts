@@ -1,0 +1,43 @@
+(instantiation 
+  (block the_table block_A block_B block_C block_D block_E block_F
+	 block_G block_H block_I block_J block_K)
+  (tvalue yes no))
+
+(initial
+
+	(block_A.position = the_table)
+        (block_A.clear = no)
+	(block_B.position = block_A)
+        (block_B.clear = no)
+        (block_C.position = block_B)
+	(block_C.clear = yes)
+
+	(block_D.position = the_table)
+        (block_D.clear = no)
+        (block_E.position = block_D)
+        (block_E.clear = no)
+	(block_J.position = block_E)
+        (block_J.clear = no)
+        (block_K.position = block_J)
+        (block_K.clear = yes)
+
+	(block_F.position = the_table)
+        (block_F.clear = no)
+	(block_G.position = block_F)
+        (block_G.clear = no)
+	(block_H.position = block_G)
+        (block_H.clear = no)
+	(block_I.position = block_H)
+        (block_I.clear = yes))
+
+
+(goal
+	(block_E.position = block_J)
+	(block_A.position = block_E)
+	(block_I.position = block_D)
+	(block_H.position = block_I)
+	(block_C.position = block_K)
+	(block_K.position = block_G)
+	(block_B.position = block_C))
+
+
