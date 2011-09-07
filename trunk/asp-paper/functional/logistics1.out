@@ -1,0 +1,23 @@
+successful initialization
+running ./logistics1 with the following args:
+	-b = 100
+	-c = 100
+	-d = 0
+	-n = 1
+	-p = 0.000000
+	-r = 100
+	-t = 0
+	-X = 1.000000
+
+initial value = 55.000000
+solution found in 57 steps (etime = 43)
+
+total time = 43
+number of elements in hash table = 2476
+diameter of hash table = 2
+average length of each hash entry = 1.003241
+heuristic evaluations = 2476
+hits on hash table = 68794
+updates of entries in the hash table = 4520
+branching factor = 15.263053
+average number of ties = 4.070133

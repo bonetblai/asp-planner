@@ -1,0 +1,43 @@
+(instantiation
+  (pos void p_zero p_one p_two p_three p_four p_five p_six p_seven p_eight)
+  (tile blank one two three four five six seven eight))
+
+(initial
+  (p_zero.up = void)	(p_one.up = void)	(p_two.up = void)
+  (p_zero.dn = p_three)	(p_one.dn = p_four)	(p_two.dn = p_five)
+  (p_zero.rt = p_one)	(p_one.rt = p_two)	(p_two.rt = void)
+  (p_zero.lt = void)	(p_one.lt = p_zero)	(p_two.lt = p_one)
+
+  (p_three.up = p_zero)	(p_four.up = p_one)	(p_five.up = p_two)
+  (p_three.dn = p_six)	(p_four.dn = p_seven)	(p_five.dn = p_eight)
+  (p_three.rt = p_four)	(p_four.rt = p_five)	(p_five.rt = void)
+  (p_three.lt = void)	(p_four.lt = p_three)	(p_five.lt = p_four)
+
+  (p_six.up = p_three)	(p_seven.up = p_four)	(p_eight.up = p_five)
+  (p_six.dn = void)	(p_seven.dn = void)	(p_eight.dn = void)
+  (p_six.rt = p_seven)	(p_seven.rt = p_eight)	(p_eight.rt = void)
+  (p_six.lt = void)	(p_seven.lt = p_six)	(p_eight.lt = p_seven)
+
+  (p_zero.cont = seven)
+  (p_one.cont = four)
+  (p_two.cont = one)
+
+  (p_three.cont = six)
+  (p_four.cont = five)
+  (p_five.cont = two)
+
+  (p_six.cont = blank)
+  (p_seven.cont = three)
+  (p_eight.cont = eight))
+
+
+(goal
+  (p_zero.cont = blank)
+  (p_one.cont = one)
+  (p_two.cont = two)
+  (p_three.cont = three)
+  (p_four.cont = four)
+  (p_five.cont = five)
+  (p_six.cont = six)
+  (p_seven.cont = seven)
+  (p_eight.cont = eight))

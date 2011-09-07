@@ -1,0 +1,68 @@
+(instantiation
+  (block the_table block_A block_B block_C block_D block_E block_F 
+         block_G block_H block_I block_J block_K block_L block_M 
+	 block_N block_O block_P block_Q block_R block_S)
+  (tvalue yes no))
+
+(initial
+  (block_M.position = the_table)
+  (block_M.clear = no)
+  (block_L.position = block_M)
+  (block_L.clear = no)
+  (block_A.position = block_L)
+  (block_A.clear = yes)
+
+  (block_O.position = the_table)
+  (block_O.clear = no)
+  (block_N.position = block_O)
+  (block_N.clear = no)
+  (block_D.position = block_N)
+  (block_D.clear = no)
+  (block_E.position = block_D)
+  (block_E.clear = no)
+  (block_J.position = block_E)
+  (block_J.clear = no)
+  (block_K.position = block_J)
+  (block_K.clear = yes)
+
+  (block_F.position = the_table)
+  (block_F.clear = no)
+  (block_G.position = block_F)
+  (block_G.clear = no)
+  (block_H.position = block_G)
+  (block_H.clear = no)
+  (block_I.position = block_H)
+  (block_I.clear = yes)
+
+  (block_B.position = the_table)
+  (block_B.clear = no)
+  (block_C.position = block_B)
+  (block_C.clear = no)
+  (block_P.position = block_C)
+  (block_P.clear = no)
+  (block_Q.position = block_P)
+  (block_Q.clear = no)
+  (block_R.position = block_Q)
+  (block_R.clear = no)
+  (block_S.position = block_R)
+  (block_S.clear = yes))
+
+(goal
+  (block_E.position = block_J)
+  (block_A.position = block_E)
+  (block_N.position = block_A)
+  (block_S.position = block_N)
+  (block_R.position = block_S)
+  (block_Q.position = block_R)
+
+  (block_I.position = block_D)
+  (block_H.position = block_I)
+  (block_M.position = block_H)
+  (block_O.position = block_M)
+
+  (block_K.position = block_G)
+  (block_P.position = block_K)
+  (block_C.position = block_P)
+  (block_B.position = block_C)
+  (block_L.position = block_B))
+

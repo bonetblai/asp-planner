@@ -1,0 +1,14 @@
+(ranges 
+  (block blockA blockB blockC))
+
+(initial
+  (ontable blockC)
+  (on blockA blockC)
+  (clear blockA)
+  (ontable blockB)
+  (clear blockB))
+
+(goal
+  (on blockB blockA)
+  (on blockC blockB))
+

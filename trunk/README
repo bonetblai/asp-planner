@@ -1,0 +1,291 @@
+
+              Action Selection for Planning
+             ------ --------- --- --------
+
+This is the official distribution of the ASP algorithm with
+the benchmark problem instances. This is a pre-beta release,
+so you must remember that it is *not complete*. This file
+describe the installation steps. Also, examples for how to 
+built the benchmarks, run them, and guidelines for the encoding
+of new instances/domains are included. We finish with our 
+addresses in case you need to contact us. The following
+is an abstract of the ASP algorithm:
+
+    The ability to plan and react in dynamic environments
+    is central to intelligent behavior yet few algorithms 
+    have managed to combine fast planning with robust ex-
+    ecution. We develop one such algorithm by looking at
+    planning as a real time hauristic search problem like
+    chess. For that we develop a variation of Rich Korf's
+    Learning Real Time A* algorithm together with a suit-
+    able heuristic function. The resulting algorithm inter-
+    leaves lookahead with execution but never actually builds
+    a plan. It is an action selection mechanism that decides
+    at each time point what's the best thing to do next.
+    Yet, most impressively, it solves planning problems 
+    faster than any domain independent planning algorithm
+    known to us including Kautz's and Selman's SATPLAN.
+    It also works in the presence of perturbations and
+    noise, it's gets better in successive trials, and can
+    be given a fixed time window to operate.
+
+
+
+Installation
+============
+
+
+1. Source Installation
+----------------------
+
+The source files are distributed in tar compressed format.
+The untar process will create a subtree rooted in ./asp.
+You may decompress and untar the files in any place,
+provided that you have the required premissions. For example,
+
+   cd to my planning subdirectory
+
+   $ cd ~/planning
+
+   install the files from the distribution in /tmp
+
+   $ uncompress -c /tmp/asp.tar.Z | tar -xvf -
+
+After the source installation you must have the following
+files:
+
+./asp
+./asp/README
+./asp/src
+./asp/src/functional
+./asp/src/functional/Makefile
+./asp/src/functional/funparser.y
+./asp/src/functional/aspfunplan.c
+./asp/src/functional/aspfunplan.h
+./asp/src/functional/fset.c
+./asp/src/functional/fset.h
+./asp/src/relational
+./asp/src/relational/Makefile
+./asp/src/relational/relpro-ope.c
+./asp/src/relational/relpro-tab.c
+./asp/src/relational/relplan.o
+./asp/src/relational/asprelplan.c
+./asp/src/relational/relparser.y
+./asp/src/relational/asprelplan.h
+./asp/src/relational/fset.c
+./asp/src/relational/fset.h
+./asp/src/utils
+./asp/src/utils/Makefile
+./asp/src/utils/fset.c
+./asp/src/utils/fset.h
+./asp/src/Makefile
+./asp/bin
+./asp/bin/Makefile
+./asp/lib
+./asp/lib/Makefile
+./asp/include
+./asp/include/Makefile
+./asp/Makefile
+./asp/asp-paper
+./asp/asp-paper/functional
+./asp/asp-paper/functional/logistics1.ops
+./asp/asp-paper/functional/Makefile
+./asp/asp-paper/functional/blocks2.facts
+./asp/asp-paper/functional/blocks2.ops
+./asp/asp-paper/functional/blocks3.facts
+./asp/asp-paper/functional/blocks3.ops
+./asp/asp-paper/functional/blocks4.facts
+./asp/asp-paper/functional/blocks4.ops
+./asp/asp-paper/functional/blocks5.facts
+./asp/asp-paper/functional/blocks5.ops
+./asp/asp-paper/functional/logistics2.facts
+./asp/asp-paper/functional/logistics2.ops
+./asp/asp-paper/functional/logistics3.facts
+./asp/asp-paper/functional/logistics3.ops
+./asp/asp-paper/functional/blocks1.ops
+./asp/asp-paper/functional/blocks1.facts
+./asp/asp-paper/functional/rocket2.facts
+./asp/asp-paper/functional/rocket2.ops
+./asp/asp-paper/functional/sussman.facts
+./asp/asp-paper/functional/sussman.ops
+./asp/asp-paper/functional/rocket1.ops
+./asp/asp-paper/functional/rocket1.facts
+./asp/asp-paper/functional/logistics1.facts
+./asp/asp-paper/relational
+./asp/asp-paper/relational/Makefile
+./asp/asp-paper/relational/rocket1.facts
+./asp/asp-paper/relational/rocket1.ops
+./asp/asp-paper/relational/fblocks2.facts
+./asp/asp-paper/relational/fblocks2.ops
+./asp/asp-paper/relational/fblocks3.facts
+./asp/asp-paper/relational/fblocks3.ops
+./asp/asp-paper/relational/fblocks4.facts
+./asp/asp-paper/relational/fblocks4.ops
+./asp/asp-paper/relational/logistics.facts
+./asp/asp-paper/relational/logistics.ops
+./asp/asp-paper/relational/logistics1.facts
+./asp/asp-paper/relational/logistics2.facts
+./asp/asp-paper/relational/logistics2.ops
+./asp/asp-paper/relational/logistics3.facts
+./asp/asp-paper/relational/logistics3.ops
+./asp/asp-paper/relational/rocket2.facts
+./asp/asp-paper/relational/rocket2.ops
+./asp/asp-paper/relational/blocks1.ops
+./asp/asp-paper/relational/blocks1.facts
+./asp/asp-paper/Makefile
+./asp/asp-paper/others
+./asp/asp-paper/others/Makefile
+./asp/asp-paper/others/puzzle.facts
+./asp/asp-paper/others/puzzle.ops
+./asp/asp-paper/aaai97.ps.gz
+
+
+
+2. Compilation
+--------------
+
+Making and installing binaries should not represent problem
+because is done through standard Makefiles and the source
+code should be very protable (it has benn tested in SGI, SUN,
+and IBM machines). Here is an example,
+
+   compiling the source files
+
+   $ (cd asp ; make all)
+
+   installing the sources under ./asp
+
+   $ (cd asp ; make install)
+
+   In case you use gcc and/or bison 
+
+   $ (cd asp; make all CC=gcc BISON="bison -y")
+   $ (cd asp; make install CC=gcc BISON="bison -y")
+
+
+Running the Examples
+====================
+
+In the directory ./asp/paper-asp are the benchmanrks
+we report in the AAAI-97 submission. You can "build" 
+all examples, or you can build only those that you 
+want (building all examples can take several minutes).
+
+   to build all examples:
+
+   $ (cd asp/paper-asp ; make all)
+
+   to build say: rocket1 with the functional representation
+   using gcc
+
+   $ (cd asp/paper-asp/functional ; make rocket1 CC=gcc)
+
+Let us explain the process of building an example. The problem
+operators and facts (initial situation, goal situation) is
+described in two different files. Those files are processed
+by a parser that generates three C language source files. 
+Each of them must be compiled and then linked with other
+objects in order to make an executable. The executable is the
+asp algorithm tailored for that specific problem instance.
+All the executables has the same execution interface that
+uses some parameters, between them: the number of local iterations,
+the depth of each iteration, some parameter for allocating
+space, the initial random seed, etc. For example, having built
+the rocket1 example, you can run it by:
+
+   $ cd asp/paper-asp/functional
+   $ ./rocket1 -b 100
+
+The -b parameter allocated space for keeping the sons
+of each node. Its default value is 15. The appropiate value 
+for it depends of the branching factor of the problem, but
+overestimating it (as in this example) doesn't have impact.
+Let's try another example:
+
+   $ make blocks1
+   $ ./blocks1 -b 100
+
+In order to solve the problem using *pure* Korf's LRTA* you
+must use the -k flag. For example, to solve the blocks1 problem
+instance with the LRTA* algorithm you can use:
+
+   $ ./blocks1 -b 100 -l
+
+A summary of each flag can be obtained using:
+
+   $ ./blocks1 -h
+
+
+You can find a transcript of running the asp algorithm with the
+functional encoding in ./asp/asp-paper/transcripts.
+
+
+Encodings
+=========
+
+The different encondings for each problem can be found 
+under the functional and relational subdirectories in 
+./asp/paper-asp. Looking at them can give an idea in how
+to encode new problems instances and/or domains.
+
+NOTE: The present distribution of asp is a beta release 
+and it's still under development. This distribution is 
+not *complete* so carefully use of it must be exercised in
+order to use it. In particular, the parser is very primitive
+an make almost no semantical checks in  the files, also
+name clashes of any kind must be avoided. In general, follow
+these guidelines when enconding new instances/domains:
+
+   - All predicate and functional fluent names are in
+     a common namespace so use *always* different names.
+
+   - Objects instances are in the same namespace, so 
+     keeps their names different from previously used names.
+
+   - Just few semantical checks are made by the parser, so
+     you must be sure your enconding is sound. If you
+     get an error like:
+
+         MAXTIME reached. Change and recompile.
+
+     when solving a problem instance. *Check* your enconding.
+     Most probably, you missed or mispelled something in either
+     the operators of facts files.
+
+If, after all, you can't encode a particular instance
+or domain, contact us for help.
+
+
+SATPLAN and Graphplan
+=====================
+
+This distribution doesn't contain the satplan and graphplan
+distribution. If you want them, you must contact their
+authors at:
+
+     SATPLAN:   kautz@research.att.com   (Henry Kautz)
+                selman@research.att.com  (Bart Selman)
+
+     Graphplan: avrim@cs.cmu.edu         (Avrim Blum)
+                mxf@cs.cmu.edu           (Merrick Furst)
+
+
+Contacting Us
+=============
+
+You are encouraged to contact us for any suggestions, bugs report,
+or comments at:
+
+     bonet@usb.ve     (Blai Bonet)
+     gloerinc@usb.ve  (Gabor Loerincs)
+     hector@usb.ve    (Hector Geffner)
+
+For specific questions about the code, encodings, bugs, 
+and/or other implementation-specific stuff:
+
+     bonet@usb.ve     (Blai Bonet)
+
+
+
+
+Enjoy it.... ;-)

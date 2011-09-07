@@ -1,0 +1,48 @@
+(predicates
+	(at <rocket> <place>)
+	(at <object> <place>)
+	(in <object> <rocket>)
+	(hasfuel <rocket>)
+	(nofuel <rocket>))
+
+(operator
+  LOAD
+  (vars <object> <rocket> <place>)
+  (preconds 
+	(at <rocket> <place>)
+	(at <object> <place>))
+  (add
+	(in <object> <rocket>))
+  (del
+	(at <object> <place>)))
+
+(operator
+  UNLOAD
+  (vars <object> <rocket> <place>)
+  (preconds
+	(at <rocket> <place>)
+	(in <object> <rocket>))
+  (add
+	(at <object> <place>))
+  (del
+	(in <object> <rocket>)))
+
+(operator
+  MOVE
+ (vars <rocket> <place1> <place2>)
+ (preconds 
+	(hasfuel <rocket>) (at <rocket> <place1>))
+ (add  
+	(at <rocket> <place2>) (nofuel <rocket>))
+ (del
+	(hasfuel <rocket>) (at <rocket> <place1>)))
+
+(operator
+  REFUEL
+ (vars <rocket>)
+ (preconds 
+	(nofuel <rocket>))
+ (add
+	(hasfuel <rocket>))
+ (del
+	(nofuel <rocket>)))
